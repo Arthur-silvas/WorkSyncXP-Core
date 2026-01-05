@@ -1,0 +1,15 @@
+
+# Java compilado
+*.class
+
+# NetBeans GUI
+*.form
+
+# Build
+/build/
+/dist/
+/out/
+
+# NetBeans
+/nbproject/private/
+**/.netbeans_*
