@@ -34,4 +34,25 @@ public class registroHorasService {
         return tempoTotal; 
     }     
     
+        //Calculo de horas extra acima de 8 horas de serviço
+    public String calHorasExtra(LocalTime startInclusive, LocalTime endExclusive){
+        Duration duracaoTotal = Duration.between(startInclusive, endExclusive);
+        Duration limite = Duration.ofHours(8); 
+
+        if(duracaoTotal.minus(limite).isNegative()){             
+            long horas = Duration.ZERO.toHours();
+            long minutos = Duration.ZERO.toMinutesPart();
+            long segundos = Duration.ZERO.toSecondsPart();
+            String tempoTotal = String.format("%02d:%02d:%02d", horas, minutos, segundos);
+            return tempoTotal; 
+        }else {
+            long horas = duracaoTotal.minus(limite).toHours();
+            long minutos = duracaoTotal.minus(limite).toMinutesPart();
+            long segundos = duracaoTotal.minus(limite).toSecondsPart();
+            String tempoTotal = String.format("%02d:%02d:%02d", horas, minutos, segundos);
+            return tempoTotal; 
+        }
+        
+    }
+    
 }
